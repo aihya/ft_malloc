@@ -6,7 +6,7 @@
 #    By: aihya <aihya@student.1337.ma>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/17 14:20:21 by aihya             #+#    #+#              #
-#    Updated: 2021/12/07 17:13:21 by aihya            ###   ########.fr        #
+#    Updated: 2021/12/07 18:56:47 by aihya            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC_NAME =	all.c\
 			malloc.c \
 			free.c \
 			realloc.c \
+			reallocf.c \
 			calloc.c \
 			tools.c \
 			alloc_block.c \
@@ -27,10 +28,12 @@ SRC_NAME =	all.c\
 			alloc_zone.c \
 			best_fit.c \
 			show_mem.c \
+			show_mem_utils.c \
 			corruption.c \
 			search.c \
 			defragement.c \
-			hexdump.c
+			realloc_utils.c \
+			
 
 OBJ_NAME =	$(SRC_NAME:.c=.o)
 

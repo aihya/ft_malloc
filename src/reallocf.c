@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alloc_large.c                                      :+:      :+:    :+:   */
+/*   reallocf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aihya <aihya@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 17:36:40 by aihya             #+#    #+#             */
-/*   Updated: 2021/12/07 18:31:37 by aihya            ###   ########.fr       */
+/*   Created: 2021/12/07 18:42:43 by aihya             #+#    #+#             */
+/*   Updated: 2021/12/07 19:11:03 by aihya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_malloc.h"
 
-void	*alloc_large(size_t size)
+void    *ft_reallocf(void *ptr, size_t size)
 {
-	t_zone	*zone;
+    void    *new;
 
-	zone = new_zone(size, LARGE);
-	if (zone == NULL)
-		return (NULL);
-	if (g_mem.large == NULL)
-	{
-		g_mem.large = zone;
-		g_mem.large_end = zone;
-	}
-	else
-	{
-		g_mem.large_end->next = zone;
-		g_mem.large_end->next->prev = g_mem.large_end;
-		g_mem.large_end = g_mem.large_end->next;
-	}
-	return (shift_zone(zone));
+    new = ft_realloc(ptr, size);
+    if (new == NULL && ptr)
+        ft_free(ptr, NULL);
+    return (new);
 }

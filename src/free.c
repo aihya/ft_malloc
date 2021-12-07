@@ -6,7 +6,7 @@
 /*   By: aihya <aihya@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 11:40:17 by aihya             #+#    #+#             */
-/*   Updated: 2021/12/07 16:32:49 by aihya            ###   ########.fr       */
+/*   Updated: 2021/12/07 19:00:35 by aihya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_free(void *ptr, t_zone *hint)
 	int		type;
 	int		isfree;
 
+	init_consts();
 	zone = NULL;
 	type = -1;
 	isfree = FALSE;

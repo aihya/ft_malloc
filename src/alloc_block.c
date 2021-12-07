@@ -6,7 +6,7 @@
 /*   By: aihya <aihya@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:07:15 by aihya             #+#    #+#             */
-/*   Updated: 2021/12/06 17:15:47 by aihya            ###   ########.fr       */
+/*   Updated: 2021/12/07 18:30:01 by aihya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,30 +49,24 @@ static t_block	*alloc(size_t size, t_zone **head, t_zone **tail, int type)
 {
 	t_block	*best;
 
-	// Ckeck for head if it exists, and initialize it if it doesn't.
 	if (init_head(head, tail, type) == NULL)
 		return (NULL);
-
-	// Find the best block and return it after spliting.
 	best = best_fit(size, *head, type);
 	if (best)
 		return (split_block(best, size));
-
-	// Allocate new zone and use it's free block as the best block.
 	(*tail)->next = new_zone(zone_size(type), type);
 	if ((*tail)->next == NULL)
-		return (NULL);	
+		return (NULL);
 	(*tail)->next->prev = *tail;
 	(*tail) = (*tail)->next;
 	return (split_block((t_block *)shift_zone(*tail), size));
 }
 
-void		*alloc_block(size_t size, int type)
+void	*alloc_block(size_t size, int type)
 {
 	t_zone	**head;
 	t_zone	**tail;
 
-	// Get the corresponding head and tail for the specified type.
 	head = &g_mem.tiny;
 	tail = &g_mem.tiny_end;
 	if (type == SMALL)

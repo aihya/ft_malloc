@@ -6,7 +6,7 @@
 /*   By: aihya <aihya@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:28:43 by aihya             #+#    #+#             */
-/*   Updated: 2021/12/07 15:56:42 by aihya            ###   ########.fr       */
+/*   Updated: 2021/12/07 18:31:20 by aihya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,10 @@ static t_block	*__candidate(size_t size, t_zone *zone, size_t min_size)
 		{
 			if (block->size == size)
 				return (block);
-			if (block->size > size)
+			if (block->size > size && block->size - size >= min_size)
 			{
-				if (block->size - size >= min_size)
-				{
-					if (best == NULL || block->size < best->size)
-						best = block;
-				}
+				if (best == NULL || block->size < best->size)
+					best = block;
 			}
 		}
 		block = block->next;

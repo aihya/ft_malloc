@@ -6,7 +6,7 @@
 /*   By: aihya <aihya@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 11:18:26 by aihya             #+#    #+#             */
-/*   Updated: 2021/12/07 17:13:33 by aihya            ###   ########.fr       */
+/*   Updated: 2021/12/07 18:55:16 by aihya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,16 @@ void	free_block(t_block *block, t_zone *zone, int type);
 //		realloc
 void	*realloc(void *ptr, size_t size);
 void	*ft_realloc(void *ptr, size_t size);
+void	*replace(void *ptr, t_zone *hint, size_t size, size_t max);
+t_block	*resize_block(t_block *block, int type, size_t size);
 
 //		calloc
 void	*calloc(size_t count, size_t size);
 void	*ft_calloc(size_t count, size_t size);
+
+//		reallocf
+void	*reallocf(void *ptr, size_t size);
+void    *ft_reallocf(void *ptr, size_t size);
 
 //		Shifting
 void	*shift_block(t_block *block);
@@ -102,6 +108,9 @@ t_block	*split_block(t_block *block, size_t size);
 //		Show allocated memory
 void	show_alloc_mem(void);
 void	show_all(void);
+void	print_large(t_zone *zone, size_t *bytes);
+void	print_blocks(t_zone *zone, size_t *bytes, int all);
+void	print_header(t_zone *zone, int type);
 
 // Search
 t_zone	*search_zone(void *ptr, t_zone *head);

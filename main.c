@@ -6,7 +6,7 @@
 /*   By: aihya <aihya@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 15:17:39 by aihya             #+#    #+#             */
-/*   Updated: 2021/12/07 18:15:56 by aihya            ###   ########.fr       */
+/*   Updated: 2021/12/07 18:58:48 by aihya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int     main()
 	char *str;
 	int i;
 
-	str = (char *)malloc(10000);
+	str = calloc(100, 10);
+	str = reallocf(str, 0);
+	printf("%p\n", str);
 	// i = 0;
 	// while (i < 500)
 	// {

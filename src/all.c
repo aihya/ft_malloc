@@ -6,7 +6,7 @@
 /*   By: aihya <aihya@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 11:02:55 by aihya             #+#    #+#             */
-/*   Updated: 2021/12/06 18:40:01 by aihya            ###   ########.fr       */
+/*   Updated: 2021/12/07 18:41:09 by aihya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ void	*calloc(size_t count, size_t size)
 
 	pthread_mutex_lock(&g_mutex);
 	ptr = ft_calloc(count, size);
+	pthread_mutex_unlock(&g_mutex);
+	return (ptr);
+}
+
+void	*reallocf(void *ptr, size_t size)
+{
+	pthread_mutex_lock(&g_mutex);
+	ptr = ft_reallocf(ptr, size);
 	pthread_mutex_unlock(&g_mutex);
 	return (ptr);
 }
